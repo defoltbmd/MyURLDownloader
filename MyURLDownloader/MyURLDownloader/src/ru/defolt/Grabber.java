@@ -52,6 +52,7 @@ public class Grabber extends Thread{
 		try
 		{
 			this.listOfFileStrings = new ArrayList<String>();
+			
 			FileReader fileReader = new FileReader(this.fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String fileString;
@@ -67,6 +68,7 @@ public class Grabber extends Thread{
 			
 			while((fileString = bufferedReader.readLine()) != null) {
 				//TODO Melt threading!!!
+				this.listOfFileStrings.add(fileString);
 				dthrList.get(line%this.threadsCount).addParams(fileString, line);;
 				line++;
 				System.out.println(fileString);
